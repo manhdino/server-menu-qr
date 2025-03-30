@@ -1,13 +1,16 @@
-'use strict';
+'use strict'
 
-import asyncHandler from "@/helpers/asyncHandler";
-import express from "express";
+import asyncHandler from '@/helpers/asyncHandler'
+import express from 'express'
 import dishesController from '@controllers/dishes'
-const router = express.Router();
+const router = express.Router()
 
+router.get('/', asyncHandler(dishesController.index))
 
+router.get('/:id', asyncHandler(dishesController.show))
 
-router.get('/',  asyncHandler(dishesController.index));
+router.post('/', asyncHandler(dishesController.create))
 
+router.put('/:id', asyncHandler(dishesController.update))
 
-export default router;
+export default router

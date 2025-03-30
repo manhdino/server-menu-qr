@@ -6,15 +6,15 @@ export default class DishesEntity {
   id: number
 
   @Column({ name: 'name', type: 'varchar', length: 256, nullable: true })
-  name: number
+  name: string
 
-  @Column({type: 'numeric' ,nullable: true})
+  @Column({ type: 'numeric', nullable: true })
   price: number
 
-  @Column({ type: 'text',nullable: true })
+  @Column({ type: 'text', nullable: true })
   description: string
 
-  @Column({ type: 'varchar', length: 255,nullable: true })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   image: string
 
   @Column({ type: 'varchar', default: 'Available' })
@@ -24,10 +24,8 @@ export default class DishesEntity {
   // dishSnapshots: DishSnapshot[];
 
   @CreateDateColumn({ name: 'created_at', type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP', nullable: true })
-  createdAt: Date;
-  
-  @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP', nullable: true })
-  updatedAt: Date;
-  
+  createdAt: Date
 
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamptz', default: () => 'CURRENT_TIMESTAMP', nullable: true })
+  updatedAt: Date
 }
