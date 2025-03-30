@@ -11,7 +11,7 @@ class DishesController {
         console.log(`[P]::get list dishes:`)
         new OK({
             message: "Get list dishes successfully",
-            metadata: await DishesService.index()
+            metadata: await DishesService.index(req.query)
         }).send(res)
     }
 
