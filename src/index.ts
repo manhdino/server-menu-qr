@@ -17,7 +17,7 @@ const startServer = async () => {
   // Init Express App
   const app = express()
 
-  await database.connect()
+  await database.getInstance().connect()
 
   const errorHandler: ErrorRequestHandler = (error, req, res, next) => {
     const statusCode = error.status || 500;

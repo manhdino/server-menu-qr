@@ -34,4 +34,4 @@ class Created extends SuccessResponse {
     }
 }
 
-export default { OK, Created };
+export { OK, Created };

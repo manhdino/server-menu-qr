@@ -24,6 +24,7 @@
     "@services": "src/services",
     "@migrations": "src/migrations",
     "@entities": "src/entities",
+    "@helpers": "src/helpers",
     "@configs": "src/configs",
     "@loggers": "src/loggers",
     "@responses": "src/responses",

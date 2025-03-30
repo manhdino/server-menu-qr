@@ -48,7 +48,7 @@ class GoneError extends ErrorResponse {
 }
 
 
-export default {
+export {
     ConflictRequestError,
     BadRequestError,
     UnauthorizedError,

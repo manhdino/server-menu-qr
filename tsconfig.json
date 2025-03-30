@@ -25,6 +25,7 @@
       "@configs/*": ["configs/*"],
       "@loggers/*": ["loggers/*"],
       "@repositories/*": ["repositories/*"],
+      "@helpers/*": ["helpers/*"],
     },  
   }
 }

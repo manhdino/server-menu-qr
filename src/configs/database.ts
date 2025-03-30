@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import { DataSource } from 'typeorm'
+import { DataSource, EntityTarget, ObjectLiteral } from 'typeorm'
 import dotenv from 'dotenv';
 import winstonLogger from '@/loggers/winstonLogger'
 import { v4 as uuidv4 } from 'uuid';
@@ -20,11 +20,11 @@ export const connection = new DataSource({
 
   class Database {
 
-      private static instance: Database;
-  
-      constructor() {
-          this.connect()
-      }
+    private static instance: Database;
+    private constructor() {
+        this.connect();
+    }
+
   
       // connect
       async connect(type = 'postgres') {
@@ -47,6 +47,9 @@ export const connection = new DataSource({
           })  
       }
   
+      static getRepository<Entity extends ObjectLiteral>(entity: EntityTarget<Entity>) {
+        return connection.getRepository(entity);
+      }
       static getInstance() {
           if (!Database.instance) {
               Database.instance = new Database();
@@ -56,4 +59,4 @@ export const connection = new DataSource({
   }
   
   
-export default Database.getInstance()
+export default Database
