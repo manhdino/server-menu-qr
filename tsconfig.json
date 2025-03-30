@@ -13,9 +13,18 @@
     "paths": {
       "@/*":["*"],
       "@controllers/*": ["controllers/*"],
-      "@models/*": ["models/*"],
+      "@middlewares/*": ["middlewares/*"],
+      "@validations/*": ["validations/*"],
       "@utils/*": ["utils/*"],
       "@routes/*": ["routes/*"],
+      "@types/*": ["types/*"],
+      "@interfaces/*": ["interfaces/*"],
+      "@services/*": ["services/*"],
+      "@migrations/*": ["migrations/*"],
+      "@entities/*": ["entities/*"],
+      "@configs/*": ["configs/*"],
+      "@loggers/*": ["loggers/*"],
+      "@repositories/*": ["repositories/*"],
     },  
   }
 }
