@@ -30,6 +30,13 @@ class DishesService {
       dish: result
     }
   }
+
+  static async destroy(req: Request) {
+    const result = await DishesRepository.destroy({ dishId: Number(req.params.id) })
+    return {
+      dish: result
+    }
+  }
 }
 
 export default DishesService

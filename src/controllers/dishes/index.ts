@@ -49,6 +49,13 @@ class DishesController {
       metadata: await DishesService.update(req)
     }).send(res)
   }
+
+  destroy = async (req: Request, res: Response) => {
+    new OK({
+      message: 'Get detail dish successfully',
+      metadata: await DishesService.destroy(req)
+    }).send(res)
+  }
 }
 
 export default new DishesController()

@@ -13,4 +13,5 @@ router.post('/', asyncHandler(dishesController.create))
 
 router.put('/:id', asyncHandler(dishesController.update))
 
+router.delete('/:id', asyncHandler(dishesController.destroy))
 export default router

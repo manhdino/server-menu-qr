@@ -56,6 +56,27 @@ class DishesRepository {
       .returning('id')
       .execute()
   }
+
+  static destroy = async ({ dishId }: { dishId: number }) => {
+    // Kiểm tra xem dish có tồn tại không
+    const foundDish = await dishesRepository
+      .createQueryBuilder('dishes')
+      .where('dishes.id = :dishId', { dishId })
+      .getOne()
+
+    if (!foundDish) {
+      throw new BadRequestError('Dish not found')
+    }
+
+    // Xóa dish
+    return await dishesRepository
+      .createQueryBuilder()
+      .delete()
+      .from('dishes')
+      .where('id = :dishId', { dishId })
+      .returning('id')
+      .execute()
+  }
 }
 
 export default DishesRepository
