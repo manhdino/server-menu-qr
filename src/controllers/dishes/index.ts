@@ -4,23 +4,6 @@ import { Created, OK } from '@/responses/successResponse'
 import DishesService from '@/services/dishes'
 import { Request, Response } from 'express'
 
-// export const updateDish = (id: number, data: UpdateDishBodyType) => {
-//   return prisma.dish.update({
-//     where: {
-//       id
-//     },
-//     data
-//   })
-// }
-
-// export const deleteDish = (id: number) => {
-//   return prisma.dish.delete({
-//     where: {
-//       id
-//     }
-//   })
-// }
-
 class DishesController {
   index = async (req: Request, res: Response) => {
     new OK({

@@ -18,6 +18,7 @@ class DishesService {
   }
 
   static async create(req: Request) {
+    console.log('file', req.file)
     const result = await DishesRepository.create(req)
     return {
       dish: result

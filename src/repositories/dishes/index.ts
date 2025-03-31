@@ -38,7 +38,7 @@ class DishesRepository {
 
   static create = async (req: Request) => {
     const dishData: IDish = req.body
-    const newDish = dishesRepository.create(dishData)
+    const newDish = dishesRepository.create({ image: req.file.path, ...dishData })
     return await dishesRepository.save(newDish)
   }
 
