@@ -1,13 +1,14 @@
 import DishesRepository from '@/repositories/dishes'
+import TablesRepository from '@/repositories/tables'
 import { Request } from 'express'
 
-class DishesService {
+class TablesService {
   static async index(query) {
     // const select = ['name', 'id', 'price']
     const select = []
-    const result = await DishesRepository.index({ ...query, select: select })
+    const result = await TablesRepository.index()
     return {
-      dishes: result
+      tables: result
     }
   }
 
@@ -19,9 +20,9 @@ class DishesService {
   }
 
   static async create(req: Request) {
-    const result = await DishesRepository.create(req)
+    const result = await TablesRepository.create(req)
     return {
-      dish: result
+      table: result
     }
   }
 
@@ -40,4 +41,4 @@ class DishesService {
   }
 }
 
-export default DishesService
+export default TablesService

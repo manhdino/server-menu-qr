@@ -26,10 +26,7 @@ class DishesRepository {
       query.select(select.map((column) => `dishes.${column}`))
     }
     const [result, count] = await query.getManyAndCount()
-    return {
-      result,
-      count
-    }
+    return result
   }
 
   static show = async ({ dishId }: { dishId: number }) => {
@@ -38,7 +35,7 @@ class DishesRepository {
 
   static create = async (req: Request) => {
     const dishData: IDish = req.body
-    const newDish = dishesRepository.create({ image: req.file.path, ...dishData })
+    const newDish = dishesRepository.create(dishData)
     return await dishesRepository.save(newDish)
   }
 
@@ -48,13 +45,16 @@ class DishesRepository {
     if (!foundDish) {
       throw new BadRequestError('Dish not found')
     }
-    return await dishesRepository
+    const result = await dishesRepository
       .createQueryBuilder()
       .update()
       .set(req.body)
       .where('id = :dishId', { dishId })
       .returning('id')
       .execute()
+
+    const updatedDishId = result.raw[0].id
+    return { id: updatedDishId }
   }
 
   static destroy = async ({ dishId }: { dishId: number }) => {
