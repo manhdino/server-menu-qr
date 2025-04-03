@@ -11,6 +11,9 @@ export default class TablesEntity {
   @Column({ type: 'int', nullable: false })
   capacity: number
 
+  @Column({ type: 'int', nullable: false })
+  number: number
+
   @Column({ type: 'varchar', length: 50, default: 'Available' })
   status: string
 

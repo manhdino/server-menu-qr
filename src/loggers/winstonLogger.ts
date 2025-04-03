@@ -12,7 +12,7 @@ class WinstonLogger {
 
   constructor() {
     const formatPrint = format.printf(({ level, message, requestId, timestamp, metadata }) => {
-      return `${chalk.bgGray(timestamp)} [${level}]  [${chalk.cyan(requestId)}] [${chalk.green(message)}] ${metadata ? JSON.stringify(metadata) : ''}`
+      return `${chalk.bgGray(timestamp)} [${level}]  ${chalk.green(message)}  [${chalk.cyan(requestId)}] ${metadata ? JSON.stringify(metadata) : ''}`
     })
 
     this.logger = createLogger({

@@ -1,6 +1,7 @@
 import uploadImgCloud from '@/configs/cloudinary'
 import dishRoutes from '@/routes/dishes/index'
 import tableRoutes from '@/routes/tables/index'
+import accountRoutes from '@/routes/accounts/index'
 import express, { Request, Response } from 'express'
 import { StatusCodes } from 'http-status-codes'
 
@@ -12,6 +13,7 @@ router.get('/status', (req, res) => {
 
 router.use('/dishes', dishRoutes)
 router.use('/tables', tableRoutes)
+router.use('/accounts', accountRoutes)
 
 router.post('/upload', uploadImgCloud.single('image'), (req: Request, res: Response): void => {
   if (!req.file) {
