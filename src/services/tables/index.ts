@@ -13,9 +13,9 @@ class TablesService {
   }
 
   static async show(req: Request) {
-    const result = await DishesRepository.show({ dishId: Number(req.params.id) })
+    const result = await TablesRepository.show({ tableId: Number(req.params.id) })
     return {
-      dish: result
+      table: result
     }
   }
 
@@ -27,16 +27,16 @@ class TablesService {
   }
 
   static async update(req: Request) {
-    const result = await DishesRepository.update(req)
+    const result = await TablesRepository.update(req)
     return {
-      dish: result
+      table: result
     }
   }
 
   static async destroy(req: Request) {
-    const result = await DishesRepository.destroy({ dishId: Number(req.params.id) })
+    const result = await TablesRepository.destroy({ tableId: Number(req.params.id) })
     return {
-      dish: result
+      table: result
     }
   }
 }

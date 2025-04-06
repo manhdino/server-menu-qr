@@ -15,6 +15,13 @@ class AccountsService {
       account: result
     }
   }
+
+  static async destroy(req: Request) {
+    const result = await AccountsRepository.destroy({ accountId: Number(req.params.id) })
+    return {
+      dish: result
+    }
+  }
 }
 
 export default AccountsService

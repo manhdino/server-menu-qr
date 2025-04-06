@@ -13,5 +13,5 @@ router.post('/', asyncHandler(accountsController.create))
 
 // router.put('/:id', asyncHandler(dishesController.update))
 
-// router.delete('/:id', asyncHandler(dishesController.destroy))
+router.delete('/:id', asyncHandler(accountsController.destroy))
 export default router

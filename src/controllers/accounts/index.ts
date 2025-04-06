@@ -22,7 +22,7 @@ class TablesController {
 
   create = async (req: Request, res: Response) => {
     new Created({
-      message: 'Tạo bàn ăn thành công',
+      message: 'Tạo tài khoản thành công',
       metadata: await AccountsService.create(req)
     }).send(res)
   }
@@ -34,12 +34,12 @@ class TablesController {
   //     }).send(res)
   //   }
 
-  //   destroy = async (req: Request, res: Response) => {
-  //     new OK({
-  //       message: 'Xóa món ăn thành công',
-  //       metadata: await DishesService.destroy(req)
-  //     }).send(res)
-  //   }
+  destroy = async (req: Request, res: Response) => {
+    new OK({
+      message: 'Xóa tài khoản thành công',
+      metadata: await AccountsService.destroy(req)
+    }).send(res)
+  }
 }
 
 export default new TablesController()

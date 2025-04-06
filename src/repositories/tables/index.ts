@@ -2,6 +2,7 @@ import database from '@/configs/database'
 import TablesEntity from '@/entities/tables'
 import { v4 as uuidv4 } from 'uuid'
 import { Request } from 'express'
+import { BadRequestError } from '@/responses/errorResponse'
 
 const tablesRepository = database.getRepository(TablesEntity)
 
@@ -10,9 +11,9 @@ class TablesRepository {
     return await tablesRepository.createQueryBuilder('tables').getMany()
   }
 
-  // static show = async ({ dishId }: { dishId: number }) => {
-  //   return await dishesRepository.createQueryBuilder('dishes').where('dishes.id = :dishId', { dishId }).getOne()
-  // }
+  static show = async ({ tableId }: { tableId: number }) => {
+    return await tablesRepository.createQueryBuilder('tables').where('tables.id = :tableId', { tableId }).getOne()
+  }
 
   static create = async (req: Request) => {
     const tableData = { ...req.body, token: uuidv4() }
@@ -21,44 +22,44 @@ class TablesRepository {
     return newTable
   }
 
-  //   static update = async (req: Request) => {
-  //     const dishId = req.params.id
-  //     const foundDish = await dishesRepository.createQueryBuilder().where({ id: dishId }).getOne()
-  //     if (!foundDish) {
-  //       throw new BadRequestError('Dish not found')
-  //     }
-  //     const result = await dishesRepository
-  //       .createQueryBuilder()
-  //       .update()
-  //       .set(req.body)
-  //       .where('id = :dishId', { dishId })
-  //       .returning('id')
-  //       .execute()
+  static update = async (req: Request) => {
+    console.log(req)
+    const tableId = req.params.id
+    const foundTable = await tablesRepository.createQueryBuilder().where({ id: tableId }).getOne()
+    if (!foundTable) {
+      throw new BadRequestError('Table not found')
+    }
+    const result = await tablesRepository
+      .createQueryBuilder()
+      .update()
+      .set(req.body)
+      .where('id = :tableId', { tableId })
+      .returning('id')
+      .execute()
 
-  //     const updatedDishId = result.raw[0].id
-  //     return { id: updatedDishId }
-  //   }
+    const updatedTableId = result.raw[0].id
+    return { id: updatedTableId }
+  }
 
-  //   static destroy = async ({ dishId }: { dishId: number }) => {
-  //     // Kiểm tra xem dish có tồn tại không
-  //     const foundDish = await dishesRepository
-  //       .createQueryBuilder('dishes')
-  //       .where('dishes.id = :dishId', { dishId })
-  //       .getOne()
+  static destroy = async ({ tableId }: { tableId: number }) => {
+    const foundTable = await tablesRepository
+      .createQueryBuilder('tables')
+      .where('tables.id = :tableId', { tableId })
+      .getOne()
 
-  //     if (!foundDish) {
-  //       throw new BadRequestError('Dish not found')
-  //     }
+    if (!foundTable) {
+      throw new BadRequestError('Dish not found')
+    }
 
-  //     // Xóa dish
-  //     return await dishesRepository
-  //       .createQueryBuilder()
-  //       .delete()
-  //       .from('dishes')
-  //       .where('id = :dishId', { dishId })
-  //       .returning('id')
-  //       .execute()
-  //   }
+    // Xóa dish
+    return await tablesRepository
+      .createQueryBuilder()
+      .delete()
+      .from('tables')
+      .where('id = :tableId', { tableId })
+      .returning('id')
+      .execute()
+  }
 }
 
 export default TablesRepository

@@ -15,8 +15,8 @@ class TablesController {
 
   show = async (req: Request, res: Response) => {
     new OK({
-      message: 'Láy chi tiết món ăn thành công',
-      metadata: await DishesService.show(req)
+      message: 'Láy chi tiết bàn ăn thành công',
+      metadata: await TablesService.show(req)
     }).send(res)
   }
 
@@ -29,15 +29,15 @@ class TablesController {
 
   update = async (req: Request, res: Response) => {
     new OK({
-      message: 'Cập nhật món ắn thành công',
-      metadata: await DishesService.update(req)
+      message: 'Cập nhật bàn ăn thành công',
+      metadata: await TablesService.update(req)
     }).send(res)
   }
 
   destroy = async (req: Request, res: Response) => {
     new OK({
-      message: 'Xóa món ăn thành công',
-      metadata: await DishesService.destroy(req)
+      message: 'Xóa bàn ăn thành công',
+      metadata: await TablesService.destroy(req)
     }).send(res)
   }
 }

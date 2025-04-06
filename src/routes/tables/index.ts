@@ -7,11 +7,11 @@ const router = express.Router()
 
 router.get('/', asyncHandler(tablesController.index))
 
-// router.get('/:id', asyncHandler(dishesController.show))
+router.get('/:id', asyncHandler(tablesController.show))
 
 router.post('/', asyncHandler(tablesController.create))
 
-// router.put('/:id', asyncHandler(dishesController.update))
+router.put('/:id', asyncHandler(tablesController.update))
 
-// router.delete('/:id', asyncHandler(dishesController.destroy))
+router.delete('/:id', asyncHandler(tablesController.destroy))
 export default router
